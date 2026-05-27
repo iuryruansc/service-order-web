@@ -350,6 +350,22 @@ export function OrdersPage() {
                       >
                         {order.description || "Sem descrição."}
                       </div>
+                      <button
+                        type="button"
+                        onClick={() => navigate(`/orders/${order.id}`)}
+                        style={{
+                          marginTop: "12px",
+                          padding: "8px 12px",
+                          borderRadius: "8px",
+                          border: "1px solid #cbd5e1",
+                          backgroundColor: "#eff6ff",
+                          color: "#1d4ed8",
+                          cursor: "pointer",
+                          fontWeight: 600,
+                        }}
+                      >
+                        Ver detalhe
+                      </button>
                     </td>
                     <td style={{ padding: "14px 16px" }}>
                       <span

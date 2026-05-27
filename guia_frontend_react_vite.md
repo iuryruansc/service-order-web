@@ -118,7 +118,7 @@ npm run dev
 ### Pronto quando
 
 - [x] `npm run dev` abre a página padrão do Vite
-- [ ] Você mudou um texto em `App.tsx` e viu a alteração no navegador
+- [x] Você mudou um texto em `App.tsx` e viu a alteração no navegador
 
 ---
 
@@ -191,9 +191,9 @@ Você vai expandir esses tipos conforme usar o Swagger (`/docs` → schemas).
 
 ### Pronto quando
 
-- [ ] Existe pasta `src/components/` com pelo menos 2 componentes
-- [ ] Você usou `useState` em algum lugar
-- [ ] Entende a diferença entre **props** (entrada) e **state** (muda com o tempo)
+- [x] Existe pasta `src/components/` com pelo menos 2 componentes
+- [x] Você usou `useState` em algum lugar
+- [x] Entende a diferença entre **props** (entrada) e **state** (muda com o tempo)
 
 ---
 
@@ -261,9 +261,9 @@ Faça deploy ou rode a API local com `uvicorn` / `docker compose`.
 
 ### Pronto quando
 
-- [ ] A tela mostra a resposta do `GET /` da API
-- [ ] Você viu erro de CORS pelo menos uma vez e corrigiu com o middleware
-- [ ] Entende: Postman não usa CORS; **navegador sim**
+- [x] A tela mostra a resposta do `GET /` da API
+- [x] Você viu erro de CORS pelo menos uma vez e corrigiu com o middleware
+- [x] Entende: Postman não usa CORS; **navegador sim**
 
 ---
 
@@ -324,10 +324,10 @@ export function authHeaders(token: string) {
 
 ### Pronto quando
 
-- [ ] Login funciona contra API local ou Railway
-- [ ] Após refresh da página, token ainda loga (se escolheu localStorage)
-- [ ] `GET /auth/me` retorna dados do usuário na tela
-- [ ] Logout limpa token e volta para login
+- [x] Login funciona contra API local ou Railway
+- [x] Após refresh da página, token ainda loga (se escolheu localStorage)
+- [x] `GET /auth/me` retorna dados do usuário na tela
+- [x] Logout limpa token e volta para login
 
 ---
 
@@ -385,9 +385,9 @@ src/
 
 ### Pronto quando
 
-- [ ] Navegação entre telas sem recarregar a página inteira
-- [ ] Rota protegida redireciona para login se não autenticado
-- [ ] Layout aparece em todas as páginas internas
+- [x] Navegação entre telas sem recarregar a página inteira
+- [x] Rota protegida redireciona para login se não autenticado
+- [x] Layout aparece em todas as páginas internas
 
 ---
 
@@ -423,9 +423,9 @@ Envolva o app em `QueryClientProvider` e use `useQuery` para `listOrders`.
 
 ### Pronto quando
 
-- [ ] Lista de ordens aparece autenticado
-- [ ] Filtro por status altera a lista
-- [ ] Mensagem amigável quando não há ordens
+- [x] Lista de ordens aparece autenticado
+- [x] Filtro por status altera a lista
+- [x] Mensagem amigável quando não há ordens
 
 ---
 
@@ -451,9 +451,9 @@ Envolva o app em `QueryClientProvider` e use `useQuery` para `listOrders`.
 
 ### Pronto quando
 
-- [ ] Clique em uma ordem na lista abre o detalhe
-- [ ] Mudança de status funciona e histórico atualiza
-- [ ] Erro de transição inválida aparece para o usuário
+- [x] Clique em uma ordem na lista abre o detalhe
+- [x] Mudança de status funciona e histórico atualiza
+- [x] Erro de transição inválida aparece para o usuário
 
 ---
 
@@ -471,8 +471,8 @@ Envolva o app em `QueryClientProvider` e use `useQuery` para `listOrders`.
 
 ### Pronto quando
 
-- [ ] Criar e listar clientes sem sair do app
-- [ ] Usar `client_id` ao criar ordem (select de clientes no formulário de nova ordem — **extra**)
+- [x] Criar e listar clientes sem sair do app
+- [x] Usar `client_id` ao criar ordem (select de clientes no formulário de nova ordem — **extra**)
 
 ---
 
@@ -485,7 +485,7 @@ Envolva o app em `QueryClientProvider` e use `useQuery` para `listOrders`.
 
 ### Pronto quando
 
-- [ ] Dashboard renderiza métricas reais da API
+- [x] Dashboard renderiza métricas reais da API
 
 ---
 
@@ -507,15 +507,15 @@ Envolva o app em `QueryClientProvider` e use `useQuery` para `listOrders`.
 
 ### Checklist de qualidade
 
-- [ ] Loading em todas as telas que chamam API
-- [ ] Mensagens de erro legíveis (não só `console.log`)
+- [x] Loading em todas as telas que chamam API
+- [x] Mensagens de erro legíveis (não só `console.log`)
 - [ ] Responsivo básico (CSS simples ou Tailwind)
-- [ ] README do front: como rodar, env, link da API
+- [x] README do front: como rodar, env, link da API
 
 ### Pronto quando
 
-- [ ] App acessível por HTTPS público
-- [ ] Login e fluxo principal funcionam contra API em produção
+- [x] App acessível por HTTPS público
+- [x] Login e fluxo principal funcionam contra API em produção
 
 ---
 

@@ -3,6 +3,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { OrdersPage } from "./pages/OrdersPage";
 import { ClientsPage } from "./pages/ClientsPage";
 import { DashboardPage } from "./pages/DashboardPage";
+import { OrderDetailPage } from "./pages/OrderDetailPage";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Layout } from "./components/Layout";
 import { NewOrderPage } from "./pages/NewOrderPage";
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/orders" element={<OrdersPage />} />
             <Route path="/orders/new" element={<NewOrderPage />} />
+            <Route path="/orders/:id" element={<OrderDetailPage />} />
             <Route path="/clients" element={<ClientsPage />} />
           </Route>
         </Route>

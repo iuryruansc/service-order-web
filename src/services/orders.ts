@@ -46,11 +46,73 @@ export async function listOrders(
   return response.json();
 }
 
+export async function getOrder(
+  token: string,
+  orderId: number,
+): Promise<ServiceOrder> {
+  const response = await fetch(`${baseUrl}/service-orders/${orderId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    try {
+      const errorBody = await response.json();
+      throw new Error(errorBody.detail || `Erro ${response.status} na API`);
+    } catch {
+      throw new Error(
+        `Erro ao buscar ordem de serviço (Status ${response.status})`,
+      );
+    }
+  }
+
+  return response.json();
+}
+
+export async function getOrderHistory(
+  token: string,
+  orderId: number,
+): Promise<OrderHistoryEntry[]> {
+  const response = await fetch(`${baseUrl}/service-orders/${orderId}/history`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    try {
+      const errorBody = await response.json();
+      throw new Error(errorBody.detail || `Erro ${response.status} na API`);
+    } catch {
+      throw new Error(
+        `Erro ao buscar histórico da ordem (Status ${response.status})`,
+      );
+    }
+  }
+
+  return response.json();
+}
+
 export type CreateOrderInput = {
   title: string;
   description: string;
   priority: "low" | "medium" | "high";
   client_id: number;
+};
+
+export type OrderHistoryEntry = {
+  id: number;
+  status: "open" | "in_progress" | "done" | "cancelled";
+  changed_at?: string;
+  created_at?: string;
+  timestamp?: string;
+  changed_by?: string;
+  note?: string;
 };
 
 /**

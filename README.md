@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Service Order Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React + TypeScript + Vite para consumir a Service Order API.
 
-Currently, two official plugins are available:
+Este projeto é uma SPA com autenticação, painel de dashboard, listagem de ordens, detalhe de ordem com histórico, cadastro de nova ordem e listagem de clientes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tecnologias
 
-## React Compiler
+- React 19
+- TypeScript
+- Vite
+- React Router DOM v7
+- ESLint
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funcionalidades principais
 
-## Expanding the ESLint configuration
+- login com token JWT
+- dashboard com métricas de ordens
+- listagem e filtro por status
+- página de detalhe da ordem com histórico de mudanças
+- alteração do status da ordem
+- cadastro de nova ordem
+- listagem de clientes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Estrutura de rotas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `/login` — tela de autenticação
+- `/dashboard` — painel principal
+- `/orders` — lista de ordens
+- `/orders/new` — criar nova ordem
+- `/orders/:id` — detalhe da ordem
+- `/clients` — lista de clientes
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Variáveis de ambiente
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+O frontend consome a API pelo `VITE_API_URL`.
+
+Crie um arquivo `.env` na raiz do projeto com:
+
+```env
+VITE_API_URL=http://localhost:8000
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Ajuste a URL para o endereço da sua API.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Instalação
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+## Execução
+
+```bash
+npm run dev
+```
+
+Depois, abra o endereço exibido pelo Vite (por padrão `http://localhost:5173`).
+
+## Build de produção
+
+```bash
+npm run build
+```
+
+Para testar o build localmente:
+
+```bash
+npm run preview
+```
+
+## Deploy
+
+O projeto está preparado para deploy estático. Se subir no Vercel ou Netlify, certifique-se de definir também a variável de ambiente `VITE_API_URL` no ambiente de produção.
+
+O arquivo `vercel.json` já contém um rewrite para servir a SPA corretamente.
+
+## Scripts disponíveis
+
+- `npm run dev` — inicia o servidor de desenvolvimento
+- `npm run build` — compila o app para produção
+- `npm run preview` — serve o build localmente
+- `npm run lint` — executa o ESLint
+
+## Observações
+
+O frontend depende de uma API REST com endpoints de autenticação e ordens. Garanta que a API esteja acessível e permita CORS para o domínio onde o app estiver rodando.
