@@ -10,7 +10,10 @@ export function OrdersPage() {
 
   const [orders, setOrders] = useState<ServiceOrder[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);  const [statusUpdating, setStatusUpdating] = useState<Record<number, boolean>>({});
+  const [error, setError] = useState<string | null>(null);
+  const [statusUpdating, setStatusUpdating] = useState<Record<number, boolean>>(
+    {},
+  );
   // Estado para armazenar o filtro ativo (Vazio significa "Todas")
   const [statusFilter, setStatusFilter] = useState<ServiceOrder["status"] | "">(
     "",
