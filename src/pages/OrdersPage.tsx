@@ -10,8 +10,7 @@ export function OrdersPage() {
 
   const [orders, setOrders] = useState<ServiceOrder[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
+  const [error, setError] = useState<string | null>(null);  const [statusUpdating, setStatusUpdating] = useState<Record<number, boolean>>({});
   // Estado para armazenar o filtro ativo (Vazio significa "Todas")
   const [statusFilter, setStatusFilter] = useState<ServiceOrder["status"] | "">(
     "",
@@ -54,6 +53,7 @@ export function OrdersPage() {
     if (!token) return;
     if (currentStatus === newStatus) return;
 
+    setStatusUpdating((prev) => ({ ...prev, [orderId]: true }));
     try {
       setError(null);
       await updateOrderStatus(token, orderId, newStatus);
@@ -68,6 +68,8 @@ export function OrdersPage() {
       }
       // Força recarga para resetar o select visual ao valor correto do banco
       await loadOrdersData();
+    } finally {
+      setStatusUpdating((prev) => ({ ...prev, [orderId]: false }));
     }
   }
 
@@ -382,8 +384,9 @@ export function OrdersPage() {
                         value={order.status}
                         disabled={
                           order.status === "done" ||
-                          order.status === "cancelled"
-                        } // Trava se o fluxo já tiver encerrado
+                          order.status === "cancelled" ||
+                          Boolean(statusUpdating[order.id])
+                        }
                         onChange={(e) =>
                           handleStatusChange(
                             order.id,

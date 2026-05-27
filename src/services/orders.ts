@@ -100,7 +100,7 @@ export async function updateOrderStatus(
   token: string,
   orderId: number,
   newStatus: "open" | "done" | "in_progress" | "cancelled",
-): Promise<ServiceOrder> {
+): Promise<ServiceOrder | null> {
   const response = await fetch(`${baseUrl}/service-orders/${orderId}/status`, {
     method: "PATCH",
     headers: {
@@ -123,5 +123,14 @@ export async function updateOrderStatus(
     }
   }
 
-  return response.json();
+  const text = await response.text();
+  if (!text) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
 }
